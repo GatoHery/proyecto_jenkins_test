@@ -1,5 +1,5 @@
 # Usar una imagen ligera de Node para la construcción de la app
-FROM node:16-alpine AS build
+FROM node:18-alpine AS build
 
 # Crear el directorio de trabajo de la app
 WORKDIR /app
