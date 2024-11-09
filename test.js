@@ -1,5 +1,4 @@
 import 'readable-stream';
-import 'stream-browserify';
 import fs from 'fs';
 import { expect } from 'chai';
 import * as cheerio from 'cheerio';
