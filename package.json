@@ -18,9 +18,9 @@
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
-    "readable-stream": "^4.5.2",
-    "stream-web": "^0.5.2",
+    "readable-stream": "^3.6.0",
     "stream-browserify": "^3.0.0",
-    "readable-stream": "^3.6.0"
+    "stream-web": "^0.5.2",
+    "web-streams-polyfill": "^4.0.0"
   }
 }
