@@ -4,6 +4,8 @@ import * as cheerio from 'cheerio';
 import { fileURLToPath } from 'url'; // Importamos fileURLToPath
 import path from 'path'; // Importamos el módulo path
 
+const fetch = require('node-fetch');
+require('stream-web');
 // Usamos fileURLToPath para obtener __dirname en un módulo ES
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
