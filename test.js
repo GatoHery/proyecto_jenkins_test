@@ -1,6 +1,5 @@
 import 'readable-stream';
 import 'stream-browserify';
-import 'web-streams-polyfill/ponyfill/es6'; // Importa el polyfill
 import fs from 'fs';
 import { expect } from 'chai';
 import * as cheerio from 'cheerio';
