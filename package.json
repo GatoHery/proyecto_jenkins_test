@@ -14,5 +14,8 @@
     "chai": "^5.1.2",
     "cheerio": "^1.0.0",
     "mocha": "^10.8.2"
+  },
+  "dependencies": {
+    "readable-stream": "^4.5.2"
   }
 }
