@@ -8,6 +8,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
+# Instala el polyfill para ReadableStream
+RUN npm install readable-stream
+
 # Copiar todo el contenido del proyecto y construir la app (aunque solo usamos el HTML)
 COPY . .
 
