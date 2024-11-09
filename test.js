@@ -1,6 +1,4 @@
-import { ReadableStream } from 'web-streams-polyfill/ponyfill/es6'; 
-import { WritableStream } from 'web-streams-polyfill/ponyfill/es6'; 
-
+import 'web-streams-polyfill';
 import 'readable-stream';
 import 'stream-browserify';
 import fs from 'fs';
