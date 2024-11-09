@@ -9,8 +9,8 @@ COPY package*.json ./
 # Instala las dependencias
 RUN npm install --legacy-peer-deps
 
-# Instalar polyfills para flujos en Node.js
-RUN npm install web-streams-polyfill
+# Instalar polyfills para flujos en Node.js (asegurándote de instalar también stream-browserify)
+RUN npm install web-streams-polyfill stream-browserify
 
 # Copia el resto del código de la aplicación
 COPY . .

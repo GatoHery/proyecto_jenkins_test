@@ -1,5 +1,5 @@
-import { ReadableStream } from 'web-streams-polyfill/ponyfill/es6'; // Asegúrate de importar el polyfill
-import { WritableStream } from 'web-streams-polyfill/ponyfill/es6'; // Esto es opcional, solo si también lo necesitas
+import { ReadableStream } from 'web-streams-polyfill/ponyfill/es6'; 
+import { WritableStream } from 'web-streams-polyfill/ponyfill/es6'; 
 
 import 'readable-stream';
 import 'stream-browserify';
