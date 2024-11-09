@@ -1,5 +1,4 @@
 import 'web-streams-polyfill';
-import 'readable-stream';
 import 'stream-browserify';
 import fs from 'fs';
 import { expect } from 'chai';
