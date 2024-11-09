@@ -1,5 +1,8 @@
+// Primero, asegúrate de que los polyfills estén cargados
 import 'web-streams-polyfill';
 import 'stream-browserify';
+
+// Importaciones de otros módulos
 import fs from 'fs';
 import { expect } from 'chai';
 import * as cheerio from 'cheerio';
