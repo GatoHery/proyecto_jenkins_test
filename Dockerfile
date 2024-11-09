@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:16-alpine
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -9,8 +9,8 @@ COPY package*.json ./
 # Instala las dependencias
 RUN npm install --legacy-peer-deps
 
-# Instala el polyfill para ReadableStream
-RUN npm install readable-stream
+# Instalar polyfills para flujos en Node.js
+RUN npm install readable-stream stream-browserify
 
 # Copia el resto del código de la aplicación
 COPY . .
