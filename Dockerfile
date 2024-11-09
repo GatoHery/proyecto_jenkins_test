@@ -1,24 +1,22 @@
-# Usar una imagen ligera de Node para la construcción de la app
-FROM node:18-alpine AS build
+FROM node:18-alpine
 
-# Crear el directorio de trabajo de la app
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar los archivos de dependencias y luego instalar las dependencias
+# Copia los archivos de la aplicación al contenedor
 COPY package*.json ./
+
+# Instala las dependencias
 RUN npm install --legacy-peer-deps
 
 # Instala el polyfill para ReadableStream
 RUN npm install readable-stream
 
-# Copiar todo el contenido del proyecto y construir la app (aunque solo usamos el HTML)
+# Copia el resto del código de la aplicación
 COPY . .
 
-# Usar una imagen ligera de Apache para servir la app
-FROM httpd:alpine
-
-# Copiar el archivo html desde la fase de construcción al directorio de Apache
-COPY --from=build /app/hola.html /usr/local/apache2/htdocs/index.html
-
-# Exponer el puerto 80
+# Expone el puerto 80 para Apache (o el que estés utilizando)
 EXPOSE 80
+
+# Comando para ejecutar tu aplicación o iniciar Apache
+CMD ["npm", "start"]  # O el comando adecuado según tu configuración
