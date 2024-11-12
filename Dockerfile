@@ -1,16 +1,28 @@
+# Usa la imagen base de Node.js 16 con Alpine
 FROM node:16-alpine
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
 # Copia los archivos de la aplicación al contenedor
-COPY package*.json ./
+COPY package*.json ./ 
 
 # Instala las dependencias
 RUN npm install
 
 # Instala readable-stream como polyfill para ReadableStream
 RUN npm install readable-stream
+
+# Instala Chromium
+RUN apk add --no-cache \
+  chromium \
+  nss \
+  freetype \
+  harfbuzz \
+  ttf-freefont
+
+# Establece la variable de entorno para Puppeteer
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Copia el resto del código de la aplicación
 COPY . .
