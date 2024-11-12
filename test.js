@@ -1,33 +1,33 @@
-// Primero, asegúrate de que los polyfills estén cargados
-import 'web-streams-polyfill';
-import 'stream-browserify';
+import { assert } from 'chai';
 
-// Importaciones de otros módulos
-import fs from 'fs';
-import { expect } from 'chai';
-import * as cheerio from 'cheerio';
-import { fileURLToPath } from 'url'; // Importamos fileURLToPath
-import path from 'path'; // Importamos el módulo path
+function saludar(nombre) {
+    return `Hola, ${nombre}`;
+}
 
-// Usamos fileURLToPath para obtener __dirname en un módulo ES
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+describe('Pruebas para la función saludar', function() {
+    it('Debe devolver "Hola, Ana" cuando el nombre es "Ana"', function() {
+        const nombre = 'Ana';
+        const resultado = saludar(nombre);
+        
+        // Mensaje detallado para el test
+        console.log(`  Probando la función con el nombre: ${nombre}`);
+        console.log(`  Se esperaba: "Hola, Ana"`);
+        console.log(`  Se devolvió: "${resultado}"`);
 
-describe('Pruebas Unitarias para HTML', function() {
-    it('debe contener la frase "Hola Mundo"', function(done) {
-        // Obtenemos la ruta del archivo 'hola.html' en la carpeta actual
-        const filePath = path.join(__dirname, 'hola.html');
+        // Realizamos la aserción
+        assert.equal(resultado, 'Hola, Ana');
+    });
 
-        // Leemos el archivo HTML
-        fs.readFile(filePath, 'utf8', function(err, data) {
-            if (err) throw err;
+    it('Debe devolver "Hola, Juan" cuando el nombre es "Juan"', function() {
+        const nombre = 'Juan';
+        const resultado = saludar(nombre);
 
-            // Cargamos el HTML con Cheerio
-            const $ = cheerio.load(data);
+        // Mensaje detallado para el test
+        console.log(`  Probando la función con el nombre: ${nombre}`);
+        console.log(`  Se esperaba: "Hola, Juan"`);
+        console.log(`  Se devolvió: "${resultado}"`);
 
-            // Verificamos que contenga "Hola Mundo"
-            expect($('body').text()).to.include('Hola Mundo');
-            done();
-        });
+        // Realizamos la aserción
+        assert.equal(resultado, 'Hola, Juan');
     });
 });

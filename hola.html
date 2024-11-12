@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
+<!-- index.html -->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina de prueba</title>
+    <script>
+        function saludar(nombre) {
+            return `Hola, ${nombre}`;
+        }
+
+        function mostrarSaludo() {
+            const nombre = document.getElementById('nombre').value;
+            const saludo = saludar(nombre);
+            document.getElementById('resultado').innerText = saludo;
+        }
+    </script>
 </head>
 <body>
-    <h1>Hola Mundo</h1> 
+    <h1>Ejemplo de saludo</h1>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+    <button onclick="mostrarSaludo()">Saludar</button>
+    <p id="resultado"></p>
 </body>
 </html>
