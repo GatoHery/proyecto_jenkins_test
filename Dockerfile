@@ -24,6 +24,9 @@ RUN apk add --no-cache \
 # Establece la variable de entorno para Puppeteer
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
+#cache de puppeteer
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+
 # Copia el resto del código de la aplicación
 COPY . .
 
