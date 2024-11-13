@@ -13,6 +13,9 @@ RUN npm install
 # Instala readable-stream como polyfill para ReadableStream
 RUN npm install readable-stream
 
+# Instalar dependencias necesarias para Puppeteer
+RUN apk update && apk add --no-cache chromium nss freetype harfbuzz ttf-freefont
+
 # Instalar Chromium y otras dependencias necesarias
 RUN apk update && apk add --no-cache \
     chromium \
