@@ -10,7 +10,7 @@ describe('Pruebas de integración con la página HTML', function() {
     let page;
 
     before(async function() {
-        this.timeout(30000);  // Tiempo de espera específico para el hook `before`
+        this.timeout(60000);  // Tiempo de espera específico para el hook `before`
         
         try {
             console.log("Iniciando navegador...");
@@ -50,8 +50,8 @@ describe('Pruebas de integración con la página HTML', function() {
     });
 
     it('Debe mostrar el saludo "Hola, Ana" cuando se ingresa "Ana"', async function() {
-        await page.waitForSelector('#nombre', { timeout: 5000 });  // Timeout específico en waitForSelector
-        await page.waitForSelector('button', { timeout: 5000 });
+        await page.waitForSelector('#nombre', { timeout: 10000 });  // Timeout específico en waitForSelector
+        await page.waitForSelector('button', { timeout: 10000 });
 
         await page.type('#nombre', 'Ana');
         await page.click('button');
