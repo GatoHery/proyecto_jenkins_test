@@ -4,20 +4,30 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 describe('Pruebas de integración con la página HTML', function() {
-    this.timeout(30000);  // Aumenta el tiempo de espera global a 30 segundos
+    this.timeout(30000);  // Tiempo de espera global a 30 segundos
 
     let browser;
     let page;
 
     before(async function() {
-        this.timeout(30000);  // Aumenta el tiempo de espera específico para el hook `before`
+        this.timeout(30000);  // Tiempo de espera específico para el hook `before`
         
         try {
             console.log("Iniciando navegador...");
             browser = await puppeteer.launch({
-                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                headless: true,  // Asegura que esté en modo sin interfaz gráfica
+                args: [
+                    '--no-sandbox', 
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',  // Evita almacenamiento en /dev/shm
+                    '--single-process',         // Ejecuta todo en un solo proceso
+                    '--disable-gpu'             // No usa aceleración de GPU
+                ]
             });
             page = await browser.newPage();
+
+            // Configuración de tamaño de la página para optimizar rendimiento
+            await page.setViewport({ width: 1280, height: 800 });
 
             const __filename = fileURLToPath(import.meta.url);
             const __dirname = path.dirname(__filename);
@@ -40,8 +50,8 @@ describe('Pruebas de integración con la página HTML', function() {
     });
 
     it('Debe mostrar el saludo "Hola, Ana" cuando se ingresa "Ana"', async function() {
-        await page.waitForSelector('#nombre');
-        await page.waitForSelector('button');
+        await page.waitForSelector('#nombre', { timeout: 5000 });  // Timeout específico en waitForSelector
+        await page.waitForSelector('button', { timeout: 5000 });
 
         await page.type('#nombre', 'Ana');
         await page.click('button');
