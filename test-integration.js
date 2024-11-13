@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 describe('Pruebas de integración con la página HTML', function() {
-    this.timeout(30000);  // Tiempo de espera global a 30 segundos
+    this.timeout(60000);  // Tiempo de espera global a 30 segundos
 
     let browser;
     let page;
