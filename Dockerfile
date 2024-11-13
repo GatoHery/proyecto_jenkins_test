@@ -30,6 +30,9 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 #cache de puppeteer
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 
+#permisos de ejecución
+RUN chmod +x /app/node_modules/.bin/puppeteer
+
 # Copia el resto del código de la aplicación
 COPY . .
 
