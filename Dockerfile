@@ -13,13 +13,13 @@ RUN npm install
 # Instala readable-stream como polyfill para ReadableStream
 RUN npm install readable-stream
 
-# Instala Chromium
-RUN apk add --no-cache \
-  chromium \
-  nss \
-  freetype \
-  harfbuzz \
-  ttf-freefont
+# Instalar Chromium y otras dependencias necesarias
+RUN apk update && apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ttf-freefont
 
 # Establece la variable de entorno para Puppeteer
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
