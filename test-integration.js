@@ -1,9 +1,3 @@
-//Resumen del Flujo
-//Abre el navegador y navega a la página hola.html.
-//Espera a que los elementos necesarios se carguen.
-//Simula la entrada del nombre "Ana" y hace clic en el botón.
-//Verifica que el saludo sea correcto en la página.
-
 import { expect } from 'chai';
 import puppeteer from 'puppeteer';
 import path from 'path';  // Necesario para resolver la ruta correctamente
