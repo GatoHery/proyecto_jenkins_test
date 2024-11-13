@@ -10,24 +10,26 @@ describe('Pruebas de integración con la página HTML', function() {
     let page;
 
     before(async function() {
-        // Lanzamos el navegador antes de las pruebas
+        // Lanzamos el navegador antes de las pruebas con opciones de no-sandbox
         console.log("Iniciando navegador...");
-        browser = await puppeteer.launch();
+        browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
         page = await browser.newPage();
 
-        // Obtener la ruta del archivo actual (es equivalente a __dirname)
-        const __filename = fileURLToPath(import.meta.url);  // Obtiene la ruta del archivo actual
-        const __dirname = path.dirname(__filename);  // Obtiene el directorio del archivo
+        // Obtener la ruta del archivo actual (equivalente a __dirname)
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = path.dirname(__filename);
 
         // Usamos path.resolve para obtener la ruta absoluta al archivo HTML
-        const filePath = path.resolve(__dirname, 'hola.html');  // Cambia 'index.html' si el nombre es diferente
+        const filePath = path.resolve(__dirname, 'hola.html');
 
-        console.log("Ruta completa del archivo:", filePath);  // Verifica la ruta completa del archivo
+        console.log("Ruta completa del archivo:", filePath);
 
         // Asegúrate de que la ruta esté bien formateada y sin problemas de barra invertida
         const fileUrl = `file://${filePath.replace(/\\/g, '/')}`;
 
-        console.log("URL completa del archivo:", fileUrl);  // Verifica la URL completa
+        console.log("URL completa del archivo:", fileUrl);
 
         // Accedemos al archivo local con file://
         console.log("Accediendo al archivo HTML...");
